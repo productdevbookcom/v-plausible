@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "~/vue/*": ["./playground-vue/*"],
+      "~/vue": ["./playground-vue"]
+    }
+  },
+  "extends": "./playground-nuxt/.nuxt/tsconfig.json"
+}
