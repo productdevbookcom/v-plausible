@@ -18,10 +18,10 @@ export default defineNuxtConfig({
       compilerOptions: {
         paths: {
           '~/vue/*': [
-            './playground-vue/*',
+            '../playground-vue/*',
           ],
           '~/vue': [
-            './playground-vue',
+            '../playground-vue',
           ],
         },
       },
