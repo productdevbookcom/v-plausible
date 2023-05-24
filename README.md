@@ -22,19 +22,19 @@ This module huntersofbook team created.
 
 ## Setup
 ```
-pnpm add @huntersofbook/plausible-nuxt
+pnpm add v-plausible
 ```
 ```
-yarn add @huntersofbook/plausible-nuxt
+yarn add v-plausible
 ```
 ```
-pnpm add @huntersofbook/plausible-nuxt
+pnpm add v-plausible
 ```
 
 ## Usage Vue 3
 
 ```ts
-import { createPlausible } from '@huntersofbook/plausible-vue'
+import { createPlausible } from 'v-plausible/vue'
 
 const plausible = createPlausible({
   init: {
@@ -57,7 +57,7 @@ app.use(plausible)
 ```ts
 export default defineNuxtConfig({
   modules: [
-    '@huntersofbook/plausible-nuxt'
+    '@huntersofbook/v-plausible'
   ],
   plausible: {
     init: {
