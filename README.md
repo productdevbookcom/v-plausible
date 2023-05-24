@@ -1,49 +1,134 @@
-# Nuxt Typescript Bundle Template
+# Plausible Vue 
 
-![Nuxt Typescript Bundle Template](https://github.com/productdevbookcom/nuxt-bundle-template/blob/main/.github/assets/nuxt-bundle-template.png?raw=true)
+![Nuxt Typescript Bundle Template](https://github.com/productdevbookcom/v-plausible/blob/main/.github/assets/plausible-vue.png?raw=true)
+
+<p>
+      <a href="https://www.npmjs.com/package/v-plausible"><img src="https://img.shields.io/npm/v/v-plausible.svg?style=flat&colorA=002438&colorB=28CF8D" alt="Version"></a>
+      <a href="https://www.npmjs.com/package/v-plausible"><img src="https://img.shields.io/npm/dm/v-plausible.svg?style=flat&colorA=002438&colorB=28CF8D" alt="Downloads"></a>
+      <a href="./LICENSE"><img src="https://img.shields.io/github/license/productdevbookcom/v-plausible.svg?style=flat&colorA=002438&colorB=28CF8D" alt="License"></a>
+      <a href="https://github.com/productdevbookcom/v-plausible">
+      <img src="https://img.shields.io/github/stars/productdevbookcom/v-plausible.svg?style=social&label=Star&maxAge=2592000" alt="Github Stars"> </a>
+</p>
 
 
-This is a template for creating a Typescript bundle. It is based on the [Typescript](https://www.typescriptlang.org/) compiler with the [Vite](https://vitejs.dev/) bundler.
+This module huntersofbook team created.
+
+> [Plausible](https://plausible.io/docs) integration for [Nuxt](https://nuxtjs.org)
 
 ## Features
 
-- [x] [Nuxt](https://nuxtjs.org/)
-- [x] [Typescript](https://www.typescriptlang.org/)
-- [x] [Vite](https://vitejs.dev/)
-- [x] [Vue](https://vuejs.org/)
-- [x] [Vue Macros](https://github.com/sxzz/unplugin-vue-macros)
-- [x] [ESLint](https://eslint.org/) with [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
-- [x] [Bumpp](https://github.com/antfu/bumpp) github changelog generator
-- [x] [Vitest](https://vitest.dev/)
-- [x] [Pnpm](https://pnpm.io/)
-- [x] [GitHub Actions]()
-- [x] [NPM Local Registry]()
-- [x] [Renovate]()
+- Zero-config required
+- Auto-import composables usePlausible()
+
+## Setup
+```
+pnpm add @huntersofbook/plausible-nuxt
+```
+```
+yarn add @huntersofbook/plausible-nuxt
+```
+```
+pnpm add @huntersofbook/plausible-nuxt
+```
+
+## Usage Vue 3
+
+```ts
+import { createPlausible } from '@huntersofbook/plausible-vue'
+
+const plausible = createPlausible({
+  init: {
+    domain: 'domain.com',
+    apiHost: 'https://host.com',
+    trackLocalhost: true,
+  },
+  settings: {
+    enableAutoOutboundTracking: true,
+    enableAutoPageviews: true,
+  },
+  partytown: false,
+})
+
+app.use(plausible)
+```
+
+### Nuxt Config
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    '@huntersofbook/plausible-nuxt'
+  ],
+  plausible: {
+    init: {
+      domain: 'localhost',
+      apiHost: 'https://site.com',
+      trackLocalhost: true
+    },
+    // If this is loaded you can make it true, https://github.com/nuxt-modules/partytown
+    partytown: false,
+  }
+})
+```
+
+### Composables
+
+```vue
+<script setup lang="ts">
+const { trackEvent } = usePlausible()
+</script>
+
+<template>
+  <div>
+    <button @click="trackEvent('nuxt')">
+      click me
+    </button>
+  </div>
+</template>
+```
+
+```vue
+<script setup lang="ts">
+const { trackPageview } = usePlausible()
+</script>
+```
 
 
-## Usage
+## Init Default
 
-- To use this template, click the "Use this template" button above.
-- Clone the repository to your local machine.
-- Run `pnpm install` to install the dependencies.
-- Run `pnpm dev` to start the development server.
-- Run `pnpm dev:build` nuxt build playground nuxt app.
-- Run `pnpm dev:prepare` nuxt build playground nuxt app prepare.
-- Run `pnpm build` to build the bundle.
-- Run `dev:prepare` to build the bundle in watch mode.
-- Run `pnpm play` to playground-nuxt app.
-- Run `pnpm play:vue` to playground-vue app.
-- Run `pnpm start` to start the bundle.
-- Run `pnpm lint` to lint the code. (You can also run `pnpm lint:fix` to fix the linting errors.)
-- Run `pnpm test` to run the tests. (You can also run `pnpm test:watch` to run the tests in watch mode.)
-- Run `pnpm release` to bump the version. Terminal will ask you to select the version type. And then it will automatically commit and push the changes. GitHub Actions will automatically publish git tags. NPM local registry will automatically publish the package.
+`Plausible()` accepts some [options](https://plausible-tracker.netlify.app/globals.html#plausibleinitoptions) that you may want to provide:
 
-## Configuration
+| Option         | Type     | Description                                                       | Default                  |
+| -------------- | -------- | ----------------------------------------------------------------- | ------------------------ |
+| domain         | `string` | Your site's domain, as declared by you in Plausible's settings    | `location.hostname`      |
+| hashMode       | `bool`   | Enables tracking based on URL hash changes.                       | `false`                  |
+| trackLocalhost | `bool`   | Enables tracking on *localhost*.                                  | `false`                  |
+| apiHost        | `string` | Plausible's API host to use. Change this if you are self-hosting. | `'https://plausible.io'` |
 
-### Renovate
+## Settings Default
 
-[Setup Github App](https://github.com/apps/renovate) for Renovate.
+| Option         | Type     | Description                                                       | Default                  |
+| -------------- | -------- | ----------------------------------------------------------------- | ------------------------ |
+| enableAutoPageviews | `bool` | Your site's domain, as declared by you in Plausible's settings    | `true`      |
+| enableAutoOutboundTracking       | `bool`   | Enables tracking based on URL hash changes.                       | `false`                  |
 
+
+## 💻 Development
+
+- Clone this repository
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+- Install dependencies using `pnpm install`
+- Stub module with `pnpm dev:prepare`
+- Run `pnpm dev` to start [playground](./playground) in development mode
+
+## License
+
+MIT License © 2022-PRESENT [productdevbook](https://github.com/productdevbook)
+
+
+## 💚 Credits
+
+Nuxt 3 Plugin [danielroe](https://github.com/danielroe)
 
 ## Sponsors
 
