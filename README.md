@@ -52,7 +52,8 @@ const plausible = createPlausible({
 app.use(plausible)
 ```
 
-### Nuxt Config
+### Usage Nuxt 3
+
 
 ```ts
 export default defineNuxtConfig({
