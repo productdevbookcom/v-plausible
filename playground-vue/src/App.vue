@@ -1,9 +1,14 @@
 <script setup lang="ts">
-// TODO: change to your package name
+import { usePlausible } from 'v-plausible/vue'
+
+const { trackEvent } = usePlausible()
 </script>
 
 <template>
   <div>
-    <Button>Test button</Button>
+    Nuxt module playground!
+    <button @click="trackEvent('nuxt')">
+      click me
+    </button>
   </div>
 </template>

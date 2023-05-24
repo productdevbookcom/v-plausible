@@ -1,5 +1,5 @@
 {
-  "name": "vue-bundle-template",
+  "name": "v-plausible",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.3.0",
@@ -7,12 +7,12 @@
   "author": "add author",
   "license": "MIT",
   "funding": "https://github.com/sponsors/productdevbook",
-  "homepage": "https://github.com/productdevbookcom/vue-bundle-template",
+  "homepage": "https://github.com/productdevbookcom/v-plausible",
   "repository": {
     "type": "git",
-    "url": "https://github.com/productdevbookcom/vue-bundle-template.git"
+    "url": "https://github.com/productdevbookcom/v-plausible.git"
   },
-  "bugs": "https://github.com/productdevbookcom/vue-bundle-template/issues",
+  "bugs": "https://github.com/productdevbookcom/v-plausible/issues",
   "keywords": [
     "add keywords"
   ],
@@ -21,6 +21,10 @@
       "types": "./dist/types.d.ts",
       "require": "./dist/module.cjs",
       "import": "./dist/module.mjs"
+    },
+    "./vue": {
+      "types": "./dist/vue/index.d.ts",
+      "import": "./dist/vue/index.mjs"
     },
     "./utils": "./dist/utils.mjs"
   },
@@ -53,7 +57,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.5.1",
-    "defu": "^6.1.2"
+    "defu": "^6.1.2",
+    "plausible-tracker": "^0.3.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.1",
@@ -65,7 +70,7 @@
     "@vue-macros/volar": "^0.9.8",
     "@vue/test-utils": "^2.3.2",
     "bumpp": "^9.1.0",
-    "eslint": "^8.41.0",
+    "eslint": "8.39.0",
     "jsdom": "^22.0.0",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1",
@@ -78,5 +83,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "resolutions": {
+    "vue": "^3.3.4"
   }
 }

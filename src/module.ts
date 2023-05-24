@@ -1,35 +1,73 @@
-import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
+import {
+  addImports,
+  addPlugin,
+  createResolver,
+  defineNuxtModule,
+} from '@nuxt/kit'
+import { defu } from 'defu'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {
-  apiKey: string
-}
+import { name, version } from '../package.json'
+import type { OptionPlugin } from './vue/plugin'
 
-export interface ModuleHooks {
-  'my-module:init': any
-}
-
-export interface ModulePublicRuntimeConfig {
-  NAME: string
-}
-
-export interface ModuleRuntimeConfig {
-  PRIVATE_NAME: string
-}
+export interface ModuleOptions extends OptionPlugin {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule',
+    name,
+    version,
+    configKey: 'plausible',
+    compatibility: {
+      nuxt: '^3.1.1',
+    },
   },
-  // Default configuration options of the Nuxt module
   defaults: {
-    apiKey: '',
+    init: {
+      domain: 'localhost',
+      apiHost: 'https://plausible.io',
+      trackLocalhost: false,
+    },
+    settings: {
+      enableAutoOutboundTracking: false,
+      enableAutoPageviews: true,
+    },
+    partytown: false,
   },
-  setup(_options, _nuxt) {
-    const resolver = createResolver(import.meta.url)
+  setup(options, nuxt) {
+    const { resolve } = createResolver(import.meta.url)
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
+    nuxt.options.runtimeConfig.public.plausible = defu(options, {
+      init: {
+        domain: 'localhost',
+        apiHost: 'https://plausible.io',
+        trackLocalhost: false,
+      },
+      settings: {
+        enableAutoOutboundTracking: false,
+        enableAutoPageviews: true,
+      },
+      partytown: false,
+    })
+
+    nuxt.options.vite.optimizeDeps = nuxt.options.vite.optimizeDeps || {}
+    nuxt.options.vite.optimizeDeps.exclude = nuxt.options.vite.optimizeDeps.exclude || []
+    nuxt.options.vite.optimizeDeps.exclude.push('plausible-tracker')
+
+    addPlugin({ src: resolve('./runtime/plugin'), mode: 'client' })
+
+    addImports([
+      ...['usePlausible'].map(key => ({
+        name: key,
+        as: key,
+        from: resolve('./runtime/composables'),
+      })),
+    ])
   },
 })
+
+declare module '@nuxt/schema' {
+  interface ConfigSchema {
+    publicRuntimeConfig?: {
+      plausible?: ModuleOptions
+    }
+  }
+}

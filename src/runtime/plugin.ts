@@ -1,6 +1,26 @@
-import { defineNuxtPlugin } from '#app'
+import { createPlausible } from '../vue'
+import type { ReturnUsePlasuible } from '../vue'
 
-export default defineNuxtPlugin((_nuxtApp) => {
-  // eslint-disable-next-line no-console
-  console.log('Plugin injected by my-module!')
+import { defineNuxtPlugin, useRuntimeConfig } from '#app'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig()
+  const hob = createPlausible(config.public.plausible)
+  nuxtApp.vueApp.use(hob)
+  nuxtApp.provide(
+    'plausible',
+    nuxtApp.vueApp.config.globalProperties.$plausible,
+  )
 })
+
+interface PluginInjection {
+  $plausible: ReturnUsePlasuible
+}
+
+declare module '#app' {
+  interface NuxtApp extends PluginInjection {}
+}
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties extends PluginInjection {}
+}

@@ -10,6 +10,10 @@ const externals = [
 export default defineBuildConfig({
   entries: [
     './src/utils',
+    {
+      input: './src/vue/',
+      outDir: './dist/vue',
+    },
   ],
   clean: true,
   declaration: true,
