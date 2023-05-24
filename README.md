@@ -143,4 +143,4 @@ Thanks to [@surmon-china](https://github.com/surmon-china), this project loadScr
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+MIT License © 2022-PRESENT [productdevbook](https://github.com/productdevbook)
