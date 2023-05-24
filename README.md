@@ -11,7 +11,7 @@
 </p>
 
 
-This module huntersofbook team created.
+This module productdevbook team created.
 
 > [Plausible](https://plausible.io/docs) integration for [Nuxt](https://nuxtjs.org)
 
@@ -57,7 +57,7 @@ app.use(plausible)
 ```ts
 export default defineNuxtConfig({
   modules: [
-    '@huntersofbook/v-plausible'
+    'v-plausible'
   ],
   plausible: {
     init: {
