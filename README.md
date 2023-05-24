@@ -130,6 +130,8 @@ MIT License © 2022-PRESENT [productdevbook](https://github.com/productdevbook)
 
 Nuxt 3 Plugin [danielroe](https://github.com/danielroe)
 
+Thanks to [@surmon-china](https://github.com/surmon-china), this project loadScript function is heavily inspired by [surmon-china.github.io](https://github.com/surmon-china/surmon-china.github.io).
+
 ## Sponsors
 
 <p align="center">
