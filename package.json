@@ -3,8 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@8.3.0",
-  "description": "add description",
-  "author": "add author",
+  "description": "Plausible Analytics plugin for Vue or Nuxt",
+  "author": "Mehmet - productdevbook <hi@productdevbook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/productdevbook",
   "homepage": "https://github.com/productdevbookcom/v-plausible",
@@ -14,7 +14,14 @@
   },
   "bugs": "https://github.com/productdevbookcom/v-plausible/issues",
   "keywords": [
-    "add keywords"
+    "vue 3",
+    "analytics",
+    "plausible",
+    "plausible analytics",
+    "tracking",
+    "vue",
+    "nuxt",
+    "nuxt 3",
   ],
   "exports": {
     ".": {
