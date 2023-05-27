@@ -99,7 +99,7 @@ export function createPlausible(options: OptionPlugin) {
 
       loadScript(`${data.apiHost}/js/script.js`, {
         'defer': true,
-        'data-domain': data.apiHost || 'https://plausible.io',
+        'data-domain': data.domain || 'https://plausible.io',
         'partytown': options.partytown || false,
       })
 
