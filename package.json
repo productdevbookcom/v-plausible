@@ -2,7 +2,7 @@
   "name": "v-plausible",
   "type": "module",
   "version": "1.0.2",
-  "packageManager": "pnpm@8.3.0",
+  "packageManager": "pnpm@8.6.9",
   "description": "Plausible Analytics plugin for Vue or Nuxt",
   "author": "Mehmet - productdevbook <hi@productdevbook.com>",
   "license": "MIT",
@@ -26,8 +26,8 @@
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
-      "require": "./dist/module.cjs",
-      "import": "./dist/module.mjs"
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
     },
     "./vue": {
       "types": "./dist/vue/index.d.ts",
