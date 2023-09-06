@@ -84,13 +84,14 @@
     "unplugin-vue-macros": "^2.4.14",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.34.3",    "vue": "^3.3.4"
+    "vitest": "^0.34.3",
+    "vue": "^3.3.4"
   },
   "publishConfig": {
     "access": "public"
   },
   "resolutions": {
-    "vue": "^3.3.4",
-    "v-plausible": "link:."
+    "v-plausible": "link:.",
+    "vue": "^3.3.4"
   }
 }

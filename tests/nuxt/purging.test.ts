@@ -9,6 +9,6 @@ describe('module', async () => {
   })
 
   it('should purge classes', async () => {
-    const ctx = useTestContext()
+    const _ctx = useTestContext()
   })
 })
