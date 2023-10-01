@@ -5,7 +5,7 @@
   ],
   "rebaseWhen": "conflicted",
   "schedule": [
-    "before 6am on the first day of the month"
+    "every 8 months on the first day of the month"
   ],
   "baseBranches": [
     "main"
@@ -16,6 +16,12 @@
     "pnpm"
   ],
   "packageRules": [
+    {
+      "enabled": false,
+      "matchDepTypes": [
+        "peerDependencies"
+      ]
+    },
     {
       "matchFiles": [
         "package.json"

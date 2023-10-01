@@ -3,11 +3,8 @@ import Vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [Vue()],
-  optimizeDeps: {
-    disabled: true,
-  },
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json-summary', 'json', 'html'],
