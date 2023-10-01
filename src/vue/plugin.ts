@@ -9,8 +9,7 @@ interface ScriptLoaderOption extends Partial<HTMLScriptElement> {
   partytown: boolean
 }
 
-function loadScript(source: string,
-  options: ScriptLoaderOption = {} as ScriptLoaderOption) {
+function loadScript(source: string, options: ScriptLoaderOption = {} as ScriptLoaderOption) {
   return new Promise((resolve, reject) => {
     const head = document.head || document.getElementsByTagName('head')[0]
     const script = document.createElement('script')
@@ -56,11 +55,12 @@ export interface OptionPlugin {
    */
   settings: InstallOptions
 
-  /** Partytown support
-  * @default false
-  * @type boolean
-  * @link https://partytown.builder.io/how-does-partytown-work
-  */
+  /**
+   * Partytown support
+   * @default false
+   * @type boolean
+   * @link https://partytown.builder.io/how-does-partytown-work
+   */
   partytown?: boolean
 }
 
