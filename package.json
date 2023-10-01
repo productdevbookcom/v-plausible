@@ -1,7 +1,7 @@
 {
   "name": "v-plausible",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "packageManager": "pnpm@8.6.9",
   "description": "Plausible Analytics plugin for Vue or Nuxt",
   "author": "Mehmet - productdevbook <hi@productdevbook.com>",
