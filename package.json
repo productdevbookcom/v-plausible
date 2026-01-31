@@ -76,7 +76,7 @@
     "@vue-macros/volar": "^0.16.0",
     "@vue/test-utils": "^2.4.1",
     "bumpp": "^9.2.0",
-    "eslint": "8.50.0",
+    "eslint": "9.26.0",
     "happy-dom": "^12.8.0",
     "jsdom": "^22.1.0",
     "typescript": "^5.2.2",
